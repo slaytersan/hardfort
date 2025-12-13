@@ -1,29 +1,30 @@
 /* ... Previous variables ... */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Rajdhani:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    /* Color Palette - Premium Security Theme */
-    --color-bg-primary: #050505;
-    --color-bg-secondary: #0f0f0f;
-    --color-bg-tertiary: #161616;
+    /* Color Palette - Industrial Security Theme */
+    --color-bg-primary: #121212;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-tertiary: #222222;
 
     --color-text-primary: #f0f0f0;
-    --color-text-secondary: #a0a0a0;
-    --color-text-accent: #00f0ff;
+    --color-text-secondary: #c0c0c0;
+    --color-text-accent: #4ade80;
+    /* Safety Green */
 
-    --color-accent-blue: #00f0ff;
-    /* Electric Blue/Cyan */
-    --color-accent-blue-dim: rgba(0, 240, 255, 0.1);
-    --color-accent-orange: #ff3c00;
-    /* Alert Orange */
+    --color-accent-blue: #0ea5e9;
+    /* Engineering Blue */
+    --color-accent-green: #4ade80;
+    --color-accent-blue-dim: rgba(14, 165, 233, 0.1);
+    --color-accent-green-dim: rgba(74, 222, 128, 0.1);
 
-    --color-border: #333333;
-    --glass-bg: rgba(20, 20, 20, 0.7);
+    --color-border: #444444;
+    --glass-bg: rgba(20, 20, 20, 0.9);
     --glass-border: rgba(255, 255, 255, 0.1);
 
     /* Typography */
-    --font-heading: 'Rajdhani', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
 
     /* Spacing */
     --spacing-sm: 0.5rem;
@@ -59,7 +60,7 @@ h5,
 h6 {
     font-family: var(--font-heading);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: var(--color-text-primary);
 }
 
@@ -71,7 +72,7 @@ h6 {
 
 /* Utilities */
 .text-accent {
-    color: var(--color-accent-blue);
+    color: var(--color-accent-green);
 }
 
 .text-orange {
@@ -90,40 +91,41 @@ h6 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 1px solid var(--color-accent-blue);
+    border: 1px solid var(--color-accent-green);
     background: transparent;
-    color: var(--color-accent-blue);
+    color: var(--color-accent-green);
     cursor: pointer;
     transition: all 0.3s ease;
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    border-radius: 4px;
+    /* Slightly softer look for construction */
 }
 
 .btn:hover {
-    background: var(--color-accent-blue);
+    background: var(--color-accent-green);
     color: var(--color-bg-primary);
-    box-shadow: 0 0 15px var(--color-accent-blue-dim);
+    box-shadow: 0 0 15px var(--color-accent-green-dim);
 }
 
 .btn-primary {
-    background: var(--color-accent-blue);
+    background: var(--color-accent-green);
     color: var(--color-bg-primary);
+    border-color: var(--color-accent-green);
 }
 
 .btn-primary:hover {
     background: transparent;
-    color: var(--color-accent-blue);
+    color: var(--color-accent-green);
 }
 
 .btn-secondary {
-    border-color: var(--color-text-secondary);
-    color: var(--color-text-secondary);
+    border-color: var(--color-accent-blue);
+    color: var(--color-accent-blue);
 }
 
 .btn-secondary:hover {
-    border-color: var(--color-text-primary);
-    color: var(--color-text-primary);
-    background: transparent;
-    box-shadow: none;
+    background: var(--color-accent-blue);
+    color: white;
+    box-shadow: 0 0 15px var(--color-accent-blue-dim);
 }
 
 /* Header */
@@ -132,8 +134,7 @@ h6 {
     justify-content: space-between;
     align-items: center;
     padding: var(--spacing-md) var(--spacing-lg);
-    background-color: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(10px);
+    background-color: rgba(5, 5, 5, 0.95);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
@@ -150,6 +151,19 @@ h6 {
 
 .logo span {
     color: var(--color-accent-blue);
+}
+
+.logo img {
+    height: 120px;
+    /* Increased from ~40-50px */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Logo Adjustment */
+.navbar {
+    padding: 10px var(--spacing-lg);
+    /* Reduce vertical padding to accommodate large logo */
 }
 
 .nav-links {

@@ -1,23 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('HardFort Security loaded.');
-
-    // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.backgroundColor = 'var(--color-bg-secondary)';
-                navLinks.style.padding = 'var(--spacing-md)';
-                navLinks.style.borderBottom = '1px solid var(--color-border)';
-            }
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+    }
+
+    // Contact Form Mailto Handler
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent(`New Inquiry from ${name}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n\n` +
+                `Message:\n${message}`
+            );
+
+            // Replace with the actual recipient email
+            const recipient = "slaytersan@gmail.com";
+
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
         });
     }
 });
