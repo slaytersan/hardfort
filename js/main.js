@@ -9,6 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dynamic Footer Loader
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                footerPlaceholder.innerHTML = data;
+                // Highlight active link in footer if needed
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const footerLinks = footerPlaceholder.querySelectorAll('a');
+                footerLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentPage) {
+                        link.style.color = 'var(--color-accent-blue)';
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
+
+
     // Modal & Form Handling
     const contactForm = document.getElementById('contactForm');
     const modal = document.getElementById('successModal');
