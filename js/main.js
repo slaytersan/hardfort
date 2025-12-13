@@ -9,27 +9,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contact Form Mailto Handler
+    // Modal & Form Handling
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+    const modal = document.getElementById('successModal');
+    const closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+
+    // Close Modal Function
+    const closeModal = () => {
+        if (modal) modal.classList.remove('active');
+    };
+
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    if (contactForm && modal) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Transmitting...';
+            btn.disabled = true;
 
-            const subject = encodeURIComponent(`New Inquiry from ${name}`);
-            const body = encodeURIComponent(
-                `Name: ${name}\n` +
-                `Email: ${email}\n\n` +
-                `Message:\n${message}`
-            );
-
-            // Replace with the actual recipient email
-            const recipient = "slaytersan@gmail.com";
-
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        modal.classList.add('active'); // Show success modal
+                        contactForm.reset(); // Clear form
+                    } else {
+                        alert("Transmission Error. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    alert("Transmission Error: " + error);
+                })
+                .finally(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
         });
     }
 });
