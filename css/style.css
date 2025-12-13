@@ -173,9 +173,29 @@ h6 {
         /* Give more breathing room on mobile sides */
     }
 
+    /* Allow Hero to grow if content is too tall */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+        /* Space for fixed navbar */
+        padding-bottom: 40px;
+    }
+
+    .hero-badge {
+        height: 140px;
+        /* Smaller badge on mobile to fit screen */
+        margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+        /* Slightly smaller text */
+    }
+
     .logo img {
-        height: 100px;
-        /* Slightly smaller on mobile but still prominent */
+        height: 80px;
+        /* Adjust nav logo for mobile */
     }
 
     .form-group input,
