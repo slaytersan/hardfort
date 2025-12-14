@@ -169,8 +169,8 @@ h6 {
 /* Fix Mobile Squashing & Logo Resizing */
 @media (max-width: 768px) {
     .container {
-        padding: 0 var(--spacing-md);
-        /* Give more breathing room on mobile sides */
+        padding: 0 2rem;
+        /* Increased horizontal breathing room */
     }
 
     /* Allow Hero to grow if content is too tall */
@@ -206,14 +206,20 @@ h6 {
         /* Ensure they don't overflow */
         padding: 1rem;
         /* Comfortable touch target */
-        margin-bottom: 1rem;
-        /* Ensure vertical spacing */
+        margin-bottom: 1.5rem;
+        /* Increased vertical spacing */
     }
 
     .services-grid,
-    .values-grid {
+    .values-grid,
+    .contact-grid {
         grid-template-columns: 1fr;
         /* Force single column on mobile */
+    }
+
+    .highlight-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
     }
 }
 
@@ -413,6 +419,8 @@ h6 {
     margin-bottom: var(--spacing-md);
     line-height: 1.1;
     text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    word-wrap: break-word;
+    /* Ensure long words don't overflow */
 }
 
 .hero-content p {
@@ -569,12 +577,14 @@ footer {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 1.2rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
     color: var(--color-text-primary);
     font-family: var(--font-body);
     transition: all 0.3s ease;
+    border-radius: 4px;
+    /* Soften edges */
 }
 
 .form-group input:focus,
@@ -594,6 +604,22 @@ footer {
 
 .footer-links ul li a:hover {
     color: var(--color-text-primary);
+}
+
+/* Utilities - Responsive */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+}
+
+.highlight-box {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
 }
 
 .footer-bottom {

@@ -41,7 +41,7 @@
         </section>
 
         <section class="section-padding container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+            <div class="contact-grid">
 
                 <!-- Form -->
                 <div>
@@ -61,11 +61,11 @@
                             <input type="text" id="name" name="name" placeholder="Enter identification" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Secure Email</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="name@domain.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Transmission</label>
+                            <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Enter message structure..."
                                 required></textarea>
                         </div>
@@ -105,7 +105,7 @@
             <span class="modal-icon">✅</span>
             <h2>Transmission Received</h2>
             <p style="color: var(--color-text-secondary); margin: 1rem 0;">Your inquiry has been successfully
-                transmitted to our team. We will get back to you as soon as possible.</p>
+                sent to our team. We will get back to you as soon as possible.</p>
             <button class="btn btn-primary modal-close-btn">Acknowledge</button>
         </div>
     </div>
